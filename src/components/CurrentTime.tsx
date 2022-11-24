@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import moment from "moment-timezone";
 
@@ -9,7 +9,9 @@ interface PropsCT {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    marginTop: 5,
+    marginBottom: 20,
+    paddingHorizontal: 20,
   },
   upper: {
     flexDirection: "row",
