@@ -89,9 +89,12 @@ export default function AddZoneScreen({ zones, addZone }: PropsAZS) {
   const [zone, setZone] = useState("");
   const [nickname, setNickname] = useState("");
   const unselectedNames = names.filter((name) => !zones.includes(name));
-  const filteredNames = unselectedNames.filter(
-    (name) => name.includes(filter) || moment.tz(name).format("Z").includes(filter)
-  );
+  const filteredNames = unselectedNames.filter((name) => {
+    const nameLower = name.toLowerCase();
+    const filterLower = filter.toLowerCase();
+    const UTC = moment.tz(name).format("Z");
+    return nameLower.includes(filterLower) || UTC.includes(filterLower);
+  });
 
   useEffect(() => {
     setTimeout(() => filterRef !== null && filterRef.current?.focus(), 100);

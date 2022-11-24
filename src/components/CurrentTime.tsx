@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     backgroundColor: "white",
     borderRadius: 999,
-    elevation: 10,
+    elevation: 5,
   },
   resetLabel: {
     fontSize: 12,

@@ -11,9 +11,10 @@ interface PropsTC {
 
 // const colors = { white: "#ffffff", gray: "#cccccc", black: "#000000" };
 const colors = {
-  dawn: { background: "#cccccc", foreground: "#000000" },
+  dawn: { background: "#bbbbbb", foreground: "#000000" },
   morning: { background: "#eeeeee", foreground: "#000000" },
   noon: { background: "#ffffff", foreground: "#000000" },
+  afternoon: { background: "#dddddd", foreground: "#000000" },
   evening: { background: "#888888", foreground: "#ffffff" },
   night: { background: "#555555", foreground: "#ffffff" },
   midnight: { background: "#000000", foreground: "#ffffff" },
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   container: {
-    backgroundColor: colors.morning.background,
     margin: 5,
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -79,16 +79,16 @@ export default function TimeCard({ zone, offset, name, removeZone }: PropsTC) {
   };
 
   return (
-    <TouchableOpacity style={styles.wrapper} activeOpacity={1} onPress={onPress}>
-      <View style={[styles.container, { backgroundColor: color.background }]}>
+    <View style={styles.wrapper}>
+      <TouchableOpacity onPress={onPress} style={[styles.container, { backgroundColor: color.background }]}>
         <Text style={[styles.heading, { color: color.foreground }]}>{name}</Text>
         <Text style={[styles.heading, { color: color.foreground }]}>{day}</Text>
         <Text style={[styles.time, { color: color.foreground }]}>
           {time} <Text style={styles.a}>{a}</Text>
         </Text>
         <Text style={[styles.subHeading, { color: color.foreground }]}>UTC {UTC}</Text>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -101,6 +101,8 @@ function getColorBasedOnTimeOfDay(hour: number) {
     return colors.morning;
   } else if (hour < 14) {
     return colors.noon;
+  } else if (hour < 16) {
+    return colors.afternoon;
   } else if (hour < 18) {
     return colors.evening;
   } else if (hour <= 24) {

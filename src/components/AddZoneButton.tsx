@@ -1,34 +1,40 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 interface PropsAZB {
   onPress: () => void;
 }
 
 const styles = StyleSheet.create({
-  button: {
-    position: "absolute",
-    bottom: 25,
-    right: 20,
-    width: 60,
-    height: 60,
+  wrapper: {
+    width: "50%",
+    alignItems: "stretch",
+  },
+  container: {
+    backgroundColor: "#ffffff",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
-    borderRadius: 999,
-    elevation: 15,
+    minHeight: 100,
+    margin: 5,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 20,
+    elevation: 5,
   },
-  icon: {
-    marginTop: -3,
-    fontSize: 16,
-    fontWeight: "bold",
+  plus: {
+    marginTop: -10,
+    fontWeight: "200",
+    fontSize: 50,
   },
 });
 
-export default function AddZoneButton({ onPress }: PropsAZB) {
+export default function TimeCard({ onPress }: PropsAZB) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.icon}>ADD</Text>
-    </TouchableOpacity>
+    <View style={styles.wrapper}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
+        <Text style={styles.plus}>+</Text>
+      </TouchableOpacity>
+    </View>
   );
 }

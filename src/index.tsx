@@ -43,15 +43,15 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor={backgroundColor} barStyle={"dark-content"} />
       <Text style={styles.title}>Made by Percy</Text>
-      <CurrentTime offset={offset} setOffset={setOffset} />
       <ScrollView contentContainerStyle={styles.scrollView} fadingEdgeLength={100}>
         <View style={styles.cardsContainer}>
           {zones.map((zone) => (
             <TimeCard key={zone} zone={zone} offset={offset} name={nicknames[zone]} removeZone={removeZone} />
           ))}
+          <AddZoneButton onPress={toggleModal} />
         </View>
       </ScrollView>
-      <AddZoneButton onPress={toggleModal} />
+      <CurrentTime offset={offset} setOffset={setOffset} />
       <Modal visible={modalVisible} onRequestClose={toggleModal} transparent>
         <AddZoneScreen zones={zones} addZone={addZone} />
       </Modal>
